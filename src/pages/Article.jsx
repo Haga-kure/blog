@@ -3,16 +3,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function Article() {
-  const { id } = useParams();
-
   const [article, setArticle] = useState({});
-
+  const { id } = useParams();
+  console.log(id);
   useEffect(() => {
-    axios
-      .get(`https://demo-api-one.vercel.app/api/articles/${id}`)
-      .then((res) => {
-        setArticle(res.data.body);
-      });
+    axios.get(`http://localhost:8000/articles/${id}`).then((res) => {
+      setArticle(...res.data);
+    });
+    // fetch("http//:localhost:8000/articles/1")
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
   }, []);
 
   return (
