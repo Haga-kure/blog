@@ -7,7 +7,7 @@ export default function Home() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/articles").then((res) => {
+    axios.get("http://localhost:8000").then((res) => {
       setArticles(res.data);
     });
   }, []);
